@@ -10,11 +10,15 @@ services:
         - "vhost:/etc/nginx/vhost.d"
         - "html:/usr/share/nginx/html"
         - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      networks:
+        - "bjoggis-home_default"
     nginx-proxy-acme:
       image: nginxproxy/acme-companion
       container_name: acme-companion
       volumes_from:
         - "nginx-proxy"
+      networks:
+        - "bjoggis-home_default"
       volumes:
         - "/var/run/docker.sock:/var/run/docker.sock:ro"
         - "acme:/etc/acme.sh"
@@ -26,4 +30,7 @@ volumes:
   html:
     external: true
   acme:
+    external: true
+networks:
+  bjoggis-home_default:
     external: true
