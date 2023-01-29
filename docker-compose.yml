@@ -11,7 +11,7 @@ services:
         - "html:/usr/share/nginx/html"
         - "/var/run/docker.sock:/tmp/docker.sock:ro"
       networks:
-        - "bjoggis-home_default"
+        - "internal"
     nginx-proxy-acme:
       image: nginxproxy/acme-companion
       container_name: acme-companion
