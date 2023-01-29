@@ -18,7 +18,7 @@ services:
       volumes_from:
         - "nginx-proxy"
       networks:
-        - "bjoggis-home_default"
+        - "internal"
       volumes:
         - "/var/run/docker.sock:/var/run/docker.sock:ro"
         - "acme:/etc/acme.sh"
@@ -32,5 +32,5 @@ volumes:
   acme:
     external: true
 networks:
-  bjoggis-home_default:
+  internal:
     external: true
